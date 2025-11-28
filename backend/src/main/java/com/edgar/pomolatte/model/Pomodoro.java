@@ -8,7 +8,7 @@ public class Pomodoro {
     private boolean rodando;
 
     public Pomodoro() {
-        this.minutos = 25;
+        this.minutos = 1;
         this.segundos = 0;
         this.rodando = false;
     }
