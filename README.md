@@ -4,7 +4,7 @@
 
 ---
 
-© 2025 Pomolatte. Todos os direitos reservados.
+© 2026 Pomolatte. Todos os direitos reservados.
 
 ---
 
