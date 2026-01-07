@@ -11,32 +11,53 @@ public class PomodoroService {
     public Pomodoro getPomodoro() {
         return pomodoro;
     }
+
     @Scheduled(fixedRate = 1000)
-    public void passarUmSegundo(){
-        if(!pomodoro.isRodando()) return;
+    public void passarUmSegundo() {
+        if (!pomodoro.isRunning()) return;
 
-        int minuto = pomodoro.getMinutos();
-        int segundo = pomodoro.getSegundos();
-
-        if (segundo > 0 ) {
-            pomodoro.setSegundos(segundo - 1);
-        } else if (minuto > 0) {
-            pomodoro.setMinutos(minuto - 1);
-            pomodoro.setSegundos(59);
-        }else {
-            pomodoro.setRodando(false);
+        if (pomodoro.getSeconds() > 0) {
+        pomodoro.setSeconds(pomodoro.getSeconds() - 1);
+        } else if (pomodoro.getMinutes() > 0) {
+            pomodoro.setMinutes(pomodoro.getMinutes() - 1);
+            pomodoro.setSeconds(59);
+        } else {
+            manageModeSwitch();
         }
 
-        if (pomodoro.isRodando()) {
-            System.out.println("Tic-Tac: " + pomodoro.getMinutos() + ":" + pomodoro.getSegundos());
+        if (pomodoro.isRunning()) {
+            System.out.println(pomodoro.getMode().toString() + " " + pomodoro.getMinutes() + ":" + pomodoro.getSeconds());
         }
     }
 
-    public void iniciar(){
-        pomodoro.setRodando(true);
+    private void manageModeSwitch() {
+        pomodoro.setRunning(false);
+
+        if (pomodoro.getMode() == Pomodoro.Mode.POMODORO) {
+
+            if (pomodoro.getSessions() <= 0) {
+                pomodoro.setMode(Pomodoro.Mode.LONG_BREAK);
+                pomodoro.setSessions(4);
+            }
+
+            else {
+                pomodoro.setMode(Pomodoro.Mode.SHORT_BREAK);
+                pomodoro.setSessions(pomodoro.getSessions() - 1);
+            }
+        } else {
+            pomodoro.setMode(Pomodoro.Mode.POMODORO);
+        }
+        pomodoro.resetaTempo();
+        pomodoro.setRunning(true);
     }
 
-    public void stop(){
-        pomodoro.setRodando(false);
+
+    public void iniciar() {
+        pomodoro.setRunning(true);
     }
+
+    public void stop() {
+        pomodoro.setRunning(false);
+    }
+
 }
