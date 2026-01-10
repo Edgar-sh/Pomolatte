@@ -8,14 +8,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/pomolatte")
-@CrossOrigin(origins = "http//localhost:5173")
+@CrossOrigin(origins = "*")
 public class PomodoroController {
     private final PomodoroService service;
-
-
     public PomodoroController(PomodoroService service) {
         this.service = service;
     }
+
+
+    @GetMapping("/ola")
+    public String dizerOla() {
+        return "Ola front-end";
+    }
+
+
     @GetMapping("/iniciar")
     public String iniciar() {
     service.iniciar();
