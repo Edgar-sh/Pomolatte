@@ -26,9 +26,9 @@ public class Pomodoro {
 
     @Getter
     public enum Mode {
-        POMODORO(0, 2),
-        SHORT_BREAK(0, 5),
-        LONG_BREAK(0, 10);
+        POMODORO(25, 0),
+        SHORT_BREAK(5, 0),
+        LONG_BREAK(15, 0);
 
         private int defaultMinutes;
         private int defaultSeconds;
