@@ -1,31 +1,45 @@
-import { useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
 function App() {
-  const [message, setMessage] = useState("clique no botão para testar");
+  const [pomodoro, setPomodoro] = useState(null);
 
-  const requestToJava = async () => {
-    try {
-      const response = await axios.get(
-        "http://localhost:8080/api/pomolatte/ola",
-      );
+  useEffect(() => {
+    const fetchStatus = async () => {
+      try {
+        const res = await axios.get(
+          "http://localhost:8080/api/pomolatte/status",
+        );
 
-      setMessage(response.data);
-    } catch (error) {
-      setMessage("Erro! Não foi possivel fazer a requisição");
-    }
-  };
+        setPomodoro(res.data);
+      } catch (err) {
+        console.err("Erro ao tentar obter resposta!");
+      }
+    };
+    fetchStatus();
+
+    const interval = setInterval(fetchStatus, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const iniciar = () => axios.get("http://localhost:8080/api/pomolatte/iniciar");
+  const parar = () => axios.get("http://localhost:8080/api/pomolatte/parar");
+
+  if (!pomodoro) return <p>Carregando...</p>; // caso não tenha dados.
 
   return (
-    <div style={{ padding: "10px", textAlign: "center" }}>
-      <h1>Teste de conexão</h1>
+    <div>
+      <h1>Pomolatte</h1>
+      <h2>
+        {pomodoro.minutes} : {pomodoro.seconds < 10 ? "0" + pomodoro.seconds : pomodoro.seconds}
+      </h2>
 
-      <h2 style={{ color: "orange" }}> {message}</h2>
+      <p>Modo:{pomodoro.mode}</p>
+      <p>sessões:{pomodoro.sessions}</p>
 
-      <button
-        onClick={requestToJava}
-        style={{ padding: "30px 50px", fontSize: "16px" }}
-      ></button>
+      <button onClick={iniciar}>iniciar</button>
+      <button onClick={parar}>parar</button>
     </div>
   );
 }

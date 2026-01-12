@@ -1,5 +1,6 @@
 package com.edgar.pomolatte.controller;
 
+import com.edgar.pomolatte.model.Pomodoro;
 import com.edgar.pomolatte.service.PomodoroService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,11 @@ public class PomodoroController {
         return "Ola front-end";
     }
 
+
+    @GetMapping("/status")
+    public Pomodoro getStatus(){
+        return service.getPomodoro();
+    }
 
     @GetMapping("/iniciar")
     public String iniciar() {
