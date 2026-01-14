@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import "./App.css";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -29,25 +30,20 @@ function App() {
   if (!pomodoro) return <p>Carregando...</p>; // caso não tenha dados.
 
   return (
-    <head>
-    <style>
-@import url('https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Trocchi&display=swap');
-  </style>
+    <div className="container">
+      <header className="navbar">
+        <img src="./icon_pomolatte.png" alt="logo do pomolatte" />
+        <div className="settings">
+          <img src="./gear_settings.png" alt="icon de configuração" />
+        </div>
+      </header>
 
-    <div>
-      <h1>Pomolatte</h1>
-      <h2>
-        {pomodoro.minutes} :{" "}
-        {pomodoro.seconds < 10 ? "0" + pomodoro.seconds : pomodoro.seconds}
-      </h2>
-
-      <p>Modo:{pomodoro.mode}</p>
-      <p>sessões:{pomodoro.sessions}</p>
-
-      <button onClick={iniciar}>iniciar</button>
-      <button onClick={parar}>parar</button>
+      <main>
+        <h1>
+          {pomodoro.minutes}:{pomodoro.seconds}
+        </h1>
+      </main>
     </div>
-    </head>,
   );
 }
 export default App;
