@@ -5,8 +5,11 @@
   --bg-card: #B08968;
   --bg-navbar: #B08968;
   --bg-btn: #DDB892;
-  --color-text-main: #FFFFF;
+  --color-text-main: #EDE0D4;
+  --color-text-secondary: #7F5539;
+  --color-text-card: #7F5539;
   --primary-font: "Borel", cursive;
+
 }
 
 body {

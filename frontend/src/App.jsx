@@ -38,10 +38,34 @@ function App() {
         </div>
       </header>
 
-      <main>
-        <h1>
-          {pomodoro.minutes}:{pomodoro.seconds}
-        </h1>
+      <main className="main-content">
+        <div className="timer-card">
+          <div className="mode-tabs">
+            {/* Abas */}
+            <button
+              className={`tab ${pomodoro.mode === "POMODORO" ? "active" : ""}`}
+            >
+              Pomodoro
+            </button>
+            <button
+              className={`tab ${pomodoro.mode === "SHORT_BREAK" ? "active" : ""}`}
+            >
+              Short-Break
+            </button>
+            <button
+              className={`tab ${pomodoro.mode === "LONG_BREAK" ? "active" : ""}`}
+            >
+              Long-Break
+            </button>
+          </div>
+          <div className="timer-display">
+          {String(pomodoro.minutes).padStart(2, '0')}:{String(pomodoro.seconds).padStart(2, '0')} {/* obrigatorio ter 2 caracteres, 'preenche com zero' */}
+          </div>
+        <button onClick={iniciar} className="btn-start">
+        iniciar
+        </button>
+        </div>
+
       </main>
     </div>
   );

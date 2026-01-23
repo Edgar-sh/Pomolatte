@@ -12,13 +12,55 @@
   height: 118px;
   padding: 10px 390px;
   gap: 20px;
-  
+
   justify-content: space-between;
   display: flex;
   align-items: center;
 }
+
 .settings {
   cursor: pointer;
 }
 
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.timer-card {
+  background-color: var(--bg-card);
+  padding: 3rem 4rem;
+  border-radius: 40px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+  width: 100%;
+  max-width: 550px;
+}
+
+.tab {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  font-style: normal;
+  opacity: 0.6;
+  font-size: 2rem;
+}
+
+.tab.active {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 5px, 12px;
+  border-radius: 12px;
+}
+
+.timer-display {
+  font-size: 6rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
