@@ -41,6 +41,17 @@ function App() {
       <main className="main-content">
         <div className="timer-card">
           <div className="mode-tabs">
+            <h1 className="title-card">
+              {" "}
+              {pomodoro.mode === "POMODORO"
+                ? "Pomodoro"
+                : pomodoro.mode === "SHORT_BREAK"
+                  ? "Short-Break"
+                  : pomodoro.mode === "LONG_BREAK"
+                    ? "Long-Break"
+                    : pomodoro.mode}{" "}
+              {}
+            </h1>
             {/* Abas */}
             <button
               className={`tab ${pomodoro.mode === "POMODORO" ? "active" : ""}`}
@@ -59,13 +70,14 @@ function App() {
             </button>
           </div>
           <div className="timer-display">
-          {String(pomodoro.minutes).padStart(2, '0')}:{String(pomodoro.seconds).padStart(2, '0')} {/* obrigatorio ter 2 caracteres, 'preenche com zero' */}
+            {String(pomodoro.minutes).padStart(2, "0")}:
+            {String(pomodoro.seconds).padStart(2, "0")}{" "}
+            {/* obrigatorio ter 2 caracteres, 'preenche com zero' */}
           </div>
-        <button onClick={iniciar} className="btn-start">
-        iniciar
-        </button>
+          <button onClick={iniciar} className="btn-start">
+            iniciar
+          </button>
         </div>
-
       </main>
     </div>
   );
