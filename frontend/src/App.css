@@ -1,4 +1,5 @@
-/* Garante que o container ocupe a tela toda */
+/* Garante que o container ocupe a tela toda */ 
+/*
 .container {
   min-height: 100vh;
   display: flex;
@@ -70,7 +71,7 @@
   padding: 5px, 12px;
   border-radius: 12px;
 }
-*/
+
 .timer-display {
   font-family: "Lato", sans-serif;
   font-size: 10rem;
@@ -78,3 +79,5 @@
   text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   color: var(--color-text-main);
 }
+*/
+
