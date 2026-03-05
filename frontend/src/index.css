@@ -1,10 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Borel&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;2,400;1,707;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Borel&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 @import "tailwindcss";
 
 @theme {
   --color-pomolatte: #E6CCB2;
   --color-pomolatte-layout: #B08968;
-  --color-bg-button: #DDB892;
+  --color-pomolatte-button: #DDB892;
+  --color-pomolatte-text-button: #7F5539;
+  --color-pomolatte-text: #EDE0D4;
+  --color-pomolatte-white: #fffff;
+
+  --drop-shadow-shadow-figma: 0 4px 4px rgba(0, 0, 0, 0, 25);
+
+  --font-borel: Borel, "cursive";
+  --font-lato: Lato, "sans-serif"
 }
-
-

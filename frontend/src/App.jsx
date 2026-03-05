@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/Layout/Header";
+import Button from "./components/UI/Button";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -11,70 +12,28 @@ function App() {
   useEffect(() => {
     const fetchStatus = async () => {
       try {
-        const res = await axios.get(`${API_URL}/api/pomolatte/status`);
-
-        setPomodoro(res.data);
-      } catch (err) {
-        console.error("Erro ao tentar obter resposta!");
+        const response = await axios.get(API_URL + "/api/pomolatte/status");
+        setPomodoro(response.data);
+      } catch (error) {
+        console.error(error);
       }
     };
     fetchStatus();
-
-    const interval = setInterval(fetchStatus, 1000);
-
-    return () => clearInterval(interval);
+    return () => {};
   }, []);
-
-  const iniciar = () => axios.get(`${API_URL}/api/pomolatte/iniciar`);
-  const parar = () => axios.get(`${API_URL}/api/pomolatte/parar`);
-
-  if (!pomodoro) return <p>Carregando...</p>; // caso não tenha dados.
-
   return (
     <>
       <Header />
-      <div className="bg-pomolatte h-screen w-screen  ">
-        <main className="main-content">
-          <div className="timer-card">
-            <div className="mode-tabs">
-              <h1 className="title-card">
-                {" "}
-                {pomodoro.mode === "POMODORO"
-                  ? "Pomodoro"
-                  : pomodoro.mode === "SHORT_BREAK"
-                    ? "Short-Break"
-                    : pomodoro.mode === "LONG_BREAK"
-                      ? "Long-Break"
-                      : pomodoro.mode}{" "}
-                {}
-              </h1>
-              {/* Abas */}
-              <button
-                className={`tab ${pomodoro.mode === "POMODORO" ? "active" : ""}`}
-              >
-                Pomodoro
-              </button>
-              <button
-                className={`tab ${pomodoro.mode === "SHORT_BREAK" ? "active" : ""}`}
-              >
-                Short-Break
-              </button>
-              <button
-                className={`tab ${pomodoro.mode === "LONG_BREAK" ? "active" : ""}`}
-              >
-                Long-Break
-              </button>
-            </div>
-            <div className="timer-display">
-              {String(pomodoro.minutes).padStart(2, "0")}:
-              {String(pomodoro.seconds).padStart(2, "0")}{" "}
-              {/* obrigatorio ter 2 caracteres, 'preenche com zero' */}
-            </div>
-            <button onClick={iniciar} className="btn-start">
-              iniciar
-            </button>
-          </div>
-        </main>
+      <div className="bg-pomolatte h-screen w-full">
+        <Button
+          onClick={() => {
+            console.log("teste");
+          }}
+        >
+          Short-Break
+        </Button>
+
+        <Button>Lonng-Break</Button>
       </div>
     </>
   );
