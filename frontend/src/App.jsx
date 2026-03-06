@@ -3,8 +3,13 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/Layout/Header";
 import Button from "./components/UI/Button";
+import PomolatteCard from "./components/Layout/PomolatteCard";
 
 const API_URL = import.meta.env.VITE_API_URL;
+
+const Inicar = () => {
+  axios.get(API_URL + "/api/pomolatte/iniciar");
+};
 
 function App() {
   const [pomodoro, setPomodoro] = useState(null);
@@ -24,16 +29,13 @@ function App() {
   return (
     <>
       <Header />
-      <div className="bg-pomolatte h-screen w-full">
-        <Button
-          onClick={() => {
-            console.log("teste");
-          }}
-        >
-          Short-Break
-        </Button>
-
+      <div className=" bg-pomolatte h-screen w-full content-center">
+        <PomolatteCard />
+        {/*TODO: Mostrar texto de "carregamento" enquanto pomoddo é null*/}
+        <h1>{pomodoro?.minutes + ":" + pomodoro?.seconds}</h1>
+        <Button>Short-Break</Button>
         <Button>Lonng-Break</Button>
+        <Button onClick={Inicar}>Iniciar</Button>
       </div>
     </>
   );
