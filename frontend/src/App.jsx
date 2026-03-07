@@ -5,7 +5,7 @@ import Header from "./components/Layout/Header";
 import Button from "./components/UI/Button";
 import PomolatteCard from "./components/Layout/PomolatteCard";
 import PomolatteTimer from "./components/UI/PomolatteTimer";
-
+import PomolatteTitle from "./components/UI/PomolatteTitle";
 const API_URL = import.meta.env.VITE_API_URL;
 
 const Inicar = () => {
@@ -32,14 +32,18 @@ function App() {
       <Header />
       <div className=" bg-pomolatte h-screen w-full content-center">
         <PomolatteCard>
-          <div className="flex flex-row gap-4">
+          <PomolatteTitle modeTitle={pomodoro?.mode}></PomolatteTitle>
+          <div className="flex flex-row gap-6">
             <Button>Pomodoro</Button>
             <Button>Short-Break</Button>
             <Button>Lonng-Break</Button>
           </div>
-          <PomolatteTimer minutes={pomodoro?.minutes} seconds={pomodoro?.seconds}/>
+          <PomolatteTimer
+            minutes={pomodoro?.minutes}
+            seconds={pomodoro?.seconds}
+          />
         </PomolatteCard>
-        {/*TODO: Mostrar texto de "carregamento" enquanto pomoddo é null*/}
+        {/*TODO: Mostrar texto de "carregamento" enquanto pomodoro é null*/}
       </div>
     </>
   );
