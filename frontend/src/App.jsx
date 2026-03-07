@@ -37,7 +37,7 @@ function App() {
             <Button>Short-Break</Button>
             <Button>Lonng-Break</Button>
           </div>
-          <PomolatteTimer />
+          <PomolatteTimer minutes={pomodoro?.minutes} seconds={pomodoro?.seconds}/>
         </PomolatteCard>
         {/*TODO: Mostrar texto de "carregamento" enquanto pomoddo é null*/}
       </div>
