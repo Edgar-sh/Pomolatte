@@ -8,7 +8,7 @@ import PomolatteTimer from "./components/UI/PomolatteTimer";
 import PomolatteTitle from "./components/UI/PomolatteTitle";
 const API_URL = import.meta.env.VITE_API_URL;
 
-const Inicar = () => {
+const Iniciar = () => {
   axios.get(API_URL + "/api/pomolatte/iniciar");
 };
 
@@ -25,7 +25,10 @@ function App() {
       }
     };
     fetchStatus();
-    return () => {};
+
+    const intervalId = setInterval(fetchStatus, 1000);
+
+    return () => clearInterval(intervalId);
   }, []);
   return (
     <>
@@ -42,6 +45,7 @@ function App() {
             minutes={pomodoro?.minutes}
             seconds={pomodoro?.seconds}
           />
+          <Button onClick={Iniciar}>Iniciar</Button>
         </PomolatteCard>
         {/*TODO: Mostrar texto de "carregamento" enquanto pomodoro é null*/}
       </div>
