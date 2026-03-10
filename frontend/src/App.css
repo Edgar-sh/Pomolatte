@@ -1,42 +1,83 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Garante que o container ocupe a tela toda */ 
+/*
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  background-color: var(--bg-navbar);
+  color: var(--color-text-main);
+
+  height: 118px;
+  padding: 10px 390px;
+  gap: 20px;
+
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+
+.settings {
+  cursor: pointer;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timer-card {
+  background-color: var(--bg-card);
+  padding: 3rem 4rem;
+  border-radius: 40px;
   text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+  width: 100%;
+  max-width: 550px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.tab {
+  background: none;
+  border-width: 1px 4px 2px 5px;
+  border-color: rgba(4, 4, 4, 0.15);
+  border-radius: 3px;
+  color: var(--color-text-secondary);
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  font-style: normal;
+  opacity: 0.6;
+  font-size: 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.title-card {
+  font-family: "Borel", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 4rem;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  color: var(--color-text-main);
 }
 
-.card {
-  padding: 2em;
+/*
+.tab.active {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 5px, 12px;
+  border-radius: 12px;
 }
 
-.read-the-docs {
-  color: #888;
+.timer-display {
+  font-family: "Lato", sans-serif;
+  font-size: 10rem;
+  font-weight: 800;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  color: var(--color-text-main);
 }
+*/
+

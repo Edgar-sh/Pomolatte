@@ -1,5 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import "./App.css";
+import Header from "./components/Layout/Header";
+import Button from "./components/UI/Button";
+import PomolatteCard from "./components/Layout/PomolatteCard";
+import PomolatteTimer from "./components/UI/PomolatteTimer";
+import PomolatteTitle from "./components/UI/PomolatteTitle";
+const API_URL = import.meta.env.VITE_API_URL;
+
+const Iniciar = () => {
+  axios.get(API_URL + "/api/pomolatte/iniciar");
+};
 
 function App() {
   const [pomodoro, setPomodoro] = useState(null);
@@ -7,40 +18,38 @@ function App() {
   useEffect(() => {
     const fetchStatus = async () => {
       try {
-        const res = await axios.get(
-          "http://localhost:8080/api/pomolatte/status",
-        );
-
-        setPomodoro(res.data);
-      } catch (err) {
-        console.err("Erro ao tentar obter resposta!");
+        const response = await axios.get(API_URL + "/api/pomolatte/status");
+        setPomodoro(response.data);
+      } catch (error) {
+        console.error(error);
       }
     };
     fetchStatus();
 
-    const interval = setInterval(fetchStatus, 1000);
+    const intervalId = setInterval(fetchStatus, 1000);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(intervalId);
   }, []);
-
-  const iniciar = () => axios.get("http://localhost:8080/api/pomolatte/iniciar");
-  const parar = () => axios.get("http://localhost:8080/api/pomolatte/parar");
-
-  if (!pomodoro) return <p>Carregando...</p>; // caso não tenha dados.
-
   return (
-    <div>
-      <h1>Pomolatte</h1>
-      <h2>
-        {pomodoro.minutes} : {pomodoro.seconds < 10 ? "0" + pomodoro.seconds : pomodoro.seconds}
-      </h2>
-
-      <p>Modo:{pomodoro.mode}</p>
-      <p>sessões:{pomodoro.sessions}</p>
-
-      <button onClick={iniciar}>iniciar</button>
-      <button onClick={parar}>parar</button>
-    </div>
+    <>
+      <Header />
+      <div className=" bg-pomolatte h-screen w-full content-center">
+        <PomolatteCard>
+          <PomolatteTitle modeTitle={pomodoro?.mode}></PomolatteTitle>
+          <div className="flex flex-row gap-6">
+            <Button>Pomodoro</Button>
+            <Button>Short-Break</Button>
+            <Button>Lonng-Break</Button>
+          </div>
+          <PomolatteTimer
+            minutes={pomodoro?.minutes}
+            seconds={pomodoro?.seconds}
+          />
+          <Button onClick={Iniciar}>Iniciar</Button>
+        </PomolatteCard>
+        {/*TODO: Mostrar texto de "carregamento" enquanto pomodoro é null*/}
+      </div>
+    </>
   );
 }
 export default App;
