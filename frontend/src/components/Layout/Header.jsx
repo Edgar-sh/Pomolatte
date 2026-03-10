@@ -12,7 +12,7 @@ const Header = () => {
         <img
           alt="Icon Settings"
           src="gear_settings.png"
-          className="h-10 w-auto"
+          className="h-10 w-auto cursor-pointer"
         />
       </div>
     </div>
